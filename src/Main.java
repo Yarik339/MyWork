@@ -9,13 +9,20 @@ public class Main {
         Student oleg = new Student();
         oleg.name = "Oleg";
         oleg.studentId = 11;
-        FileWriter fileWriter = new FileWriter("constructors.txt");
+        //Вывод информации до изменений
+        daniil.PrintInfo();
+
+        FileWriter fileWriter = new FileWriter("update_log.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
 
-        printWriter.println(daniil.name + " " + daniil.studentId);
-        printWriter.println(polina.name + " " + polina.studentId);
-        printWriter.println(oleg.name + " " + oleg.studentId);
-        printWriter.close();
+        // Изменяем переменную имени
+        String logMessage = daniil.updateName("Daniel");
+        printWriter.println(logMessage);
 
+        // Вывод информации после
+        daniil.PrintInfo();
+
+
+        printWriter.close();
     }
 }
