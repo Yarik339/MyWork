@@ -5,24 +5,22 @@ import java.io.PrintWriter;
 public class Main {
     public static void main(String[] args) throws IOException {
         Student daniil = new Student("Daniil", 6);
-        Student polina = new Student("Polina", 9);
-        Student oleg = new Student();
-        oleg.name = "Oleg";
-        oleg.studentId = 11;
-        //Вывод информации до изменений
-        daniil.PrintInfo();
-
-        FileWriter fileWriter = new FileWriter("update_log.txt");
+        // Используем метод addCourse для добавления курсов
+        daniil.addCourse("Java Programming");
+        daniil.addCourse("Database Systems");
+        daniil.addCourse("Algorithms");
+        // Создаем файл для сохранения курсов
+        FileWriter fileWriter = new FileWriter("courses.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
-
-        // Изменяем переменную имени
-        String logMessage = daniil.updateName("Daniel");
-        printWriter.println(logMessage);
-
-        // Вывод информации после
-        daniil.PrintInfo();
-
-
+        // Используем метод listCourses с разным количеством параметров
+        System.out.println("=== First listCourses call ===");
+        daniil.listCourses(); // Без параметров - выводим текущие курсы
+        System.out.println("\n=== Second listCourses call ===");
+        daniil.listCourses("Web Development", "Data Science"); // С параметрами - добавляем и выводим
+        // Сохраняем финальный список курсов в файл
+        printWriter.println("Courses for " + daniil.name + ":");
+        printWriter.println(daniil.getCoursesAsString());
+        // Закрываем файл
         printWriter.close();
     }
 }

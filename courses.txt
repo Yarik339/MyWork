@@ -1,0 +1,6 @@
+Courses for Daniil:
+1. Java Programming
+2. Database Systems
+3. Algorithms
+4. Web Development
+5. Data Science
